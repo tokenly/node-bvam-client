@@ -3,7 +3,7 @@
 ## Usage Example
 
 ```node
-var BVAMClient = require('node-xcpd-client');
+var BVAMClient = require('node-bvam-client');
 
 var client = BVAMClient.connect({connectionString: 'https://bvam.tokenly.com'});
 
