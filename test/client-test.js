@@ -15,12 +15,12 @@ describe('The bvam client', () => {
         client.getAssetInfo(['TOKENLY','SOUP']);
         sinon.assert.calledWith(stub, 'GET', 'assets', {assets: 'TOKENLY,SOUP'});
     });
-    // it('should return multiple asset info for get_asset_info', () => {
-    //     let client = BVAMclient.connect();
-    //     let stub = sinon.stub(client, 'call', emptyPromise);
-    //     client.getAssetInfo(['TOKENLY','FOOCOINTWO']);
-    //     sinon.assert.calledWith(stub, 'get_asset_info', {assets: ['TOKENLY','FOOCOINTWO']});
-    // });
+    it('should post BVAM data', () => {
+        let client = BVAMclient.connect();
+        let stub = sinon.stub(client, 'call', emptyPromise);
+        client.addBvamData({asset: 'FOOBAR', name: 'My Foo Bar'});
+        sinon.assert.calledWith(stub, 'POST', 'bvam', {bvam: {asset: 'FOOBAR', name: 'My Foo Bar'}});
+    });
 });
 
 function emptyPromise(method, url, args) {
